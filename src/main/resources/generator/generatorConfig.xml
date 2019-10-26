@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+	<context id="MySqlContext" targetRuntime="Mybatis3Simple"
+		defaultModelType="flat">
+
+		<!-- 自动识别数据库关键字，默认false ，如果设置为true，根据SqlReservedWords中定义的关键字列表； 一般保留默认值，遇到数据库关键字（Java关键字），使用columnOverride覆盖 -->
+		<property name="autoDelimitKeywords" value="true" />
+		<!-- 指明数据库的用于标记数据库对象名的符号，比如ORACLE就是双引号，MYSQL默认是`反引号； -->
+		<property name="beginningDelimiter" value="`" />
+		<property name="endingDelimiter" value="`" />
+		<!-- 生成的java文本编码 -->
+		<property name="javaFileEncoding" value="UTF-8" />
+
+		<!--缓存设置插件 -->
+		<plugin type="org.mybatis.generator.plugins.CachePlugin">
+			<property name="cache_eviction" value="LRU" />
+			<property name="cache_size" value="1024" />
+			<property name="cache_readOnly" value="false" />
+		</plugin>
+
+		<!--生成主配置文件插件 -->
+<!-- 
+		<plugin type="org.mybatis.generator.plugins.MapperConfigPlugin">
+			<property name="fileName" value="MybatisConfig.xml" />
+			<property name="targetPackage" value="config" />
+			<property name="targetProject"
+				value="src/main/resources" />
+		</plugin>
+ -->
+
+		<!-- 生成注释 -->
+		<commentGenerator>
+			<property name="suppressDate" value="true" />
+			<property name="addRemarkComments" value="true" />
+		</commentGenerator>
+
+
+		<jdbcConnection
+			driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/demo1"
+			userId="root"
+			password="root"
+		/>
+
+		<!-- 生成实体类 -->
+		<javaModelGenerator targetPackage="gfuzan.entrty"
+			targetProject="src/main/java">
+			<property name="trimString" value="true" />
+		</javaModelGenerator>
+
+		<!-- 生成Mapper XML -->
+		<sqlMapGenerator targetPackage="mapper"
+			targetProject="src/main/resources"></sqlMapGenerator>
+
+		<!-- 生成Mapper接口 -->
+		<javaClientGenerator targetPackage="gfuzan.mapper"
+			type="XMLMAPPER" targetProject="src/main/java"></javaClientGenerator>
+		
+		要生成的表%为通配符
+		<table tableName="%">
+			<generatedKey column="id" sqlStatement="JDBC" />
+		</table>
+
+	</context>
+</generatorConfiguration>
