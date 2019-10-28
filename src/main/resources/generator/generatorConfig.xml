@@ -58,7 +58,7 @@
 		<javaClientGenerator targetPackage="gfuzan.mapper"
 			type="XMLMAPPER" targetProject="src/main/java"></javaClientGenerator>
 		
-		要生成的表%为通配符
+		<!-- 要生成的表%为通配符 -->
 		<table tableName="%">
 			<generatedKey column="id" sqlStatement="JDBC" />
 		</table>
