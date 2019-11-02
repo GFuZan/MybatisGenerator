@@ -31,9 +31,15 @@
  -->
 
 		<!-- 生成注释 -->
-		<commentGenerator>
-			<property name="suppressDate" value="true" />
-			<property name="addRemarkComments" value="true" />
+		<commentGenerator type="gfuzan.mybatis.generator.CustomCommentGenerator">
+			<!--生成的注释包含时间戳-->
+			<property name="suppressDate" value="false" />
+			<!--生成的注释包含时间戳-->
+			<property name="suppressAllComments" value="false"/>
+			<!-- 添加数据库注释 -->
+			<property name="addRemarkComments" value="true"/>
+			<!-- 时间格式化 -->
+			<property name="dateFormat" value="yyyy-MM-dd"/>
 		</commentGenerator>
 
 
